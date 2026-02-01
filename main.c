@@ -103,14 +103,6 @@ process_file(const char* path_to_file, unsigned long path_len, const char* filen
         }
     }
 
-    if (path_len >= 4) {
-        char ext[5] = {0};
-        memcpy(ext, path_to_file + (path_len - 4), 4);
-        if (strcmp(ext, ".hpp") == 0 || strcmp(ext, ".cpp") == 0) {
-            is_src_file = true;
-        }
-    }
-
     if (!is_src_file) {
         return 0;
     }
