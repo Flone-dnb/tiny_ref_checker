@@ -111,7 +111,6 @@ process_file(const char* path_to_file, unsigned long path_len, const char* filen
     FILE* f = fopen(path_to_file, "rb");
     if (f == NULL) {
         printf("unable read the file \"%s\" (file exist?)", path_to_file);
-        fclose(f);
         return 1;
     }
 
@@ -153,7 +152,6 @@ process_directory(const char* path_to_dir) {
     DIR* dir = opendir(path_to_dir);
     if (dir == NULL) {
         printf("unable to open the directory \"%s\" (does path exist?)", path_to_dir);
-        closedir(dir);
         return 1;
     }
 
