@@ -18,13 +18,9 @@ unsigned int processed_ref_count;
 bool
 find_name(const char* code, unsigned long code_len, const char* name, unsigned long name_len) {
     unsigned long name_i = 0;
-    for (unsigned long i = 0; i < code_len; i++) {
+    for (unsigned long i = 1; i < code_len; i++) {
         if (code[i] == name[name_i]) {
-            if (name_i == 0 && i > 0 && code[i - 1] != ' ') {
-                continue;
-            }
-
-            if (name_i == 0 && (i >= 5)) {
+            if (name_i == 0 && i >= 5) {
                 // Make sure this is not a @ref.
                 char text[6] = {0};
                 memcpy(text, code + (i - 5), 5);
