@@ -91,10 +91,11 @@ int
 process_file(const char* path_to_file, unsigned long path_len, const char* filename) {
     bool is_src_file = false;
 
-    if (path_len >= 2) {
-        char ext[3] = {0};
-        memcpy(ext, path_to_file + (path_len - 2), 2);
-        if (strcmp(ext, ".h") == 0 || strcmp(ext, ".c") == 0) {
+    if (path_len >= 4) {
+        if (strcmp(path_to_file + (path_len - 2), ".h") == 0
+            || strcmp(path_to_file + (path_len - 2), ".c") == 0
+            || strcmp(path_to_file + (path_len - 4), ".hpp") == 0
+            || strcmp(path_to_file + (path_len - 4), ".cpp") == 0) {
             is_src_file = true;
         }
     }
