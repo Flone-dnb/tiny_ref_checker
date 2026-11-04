@@ -31,14 +31,8 @@ find_name(const char* code, unsigned long code_len, const char* name, unsigned l
 
             name_i += 1;
             if (name_i == name_len) {
-                // Found a match, make sure it's a function or a variable.
-                if (i + 1 >= code_len) {
-                    return false;
-                }
-                if (code[i + 1] == '(' || code[i + 1] == ';') {
-                    return true;
-                }
-                name_i = 0;
+                // Found a match.
+                return true;
             }
         } else {
             name_i = 0;
